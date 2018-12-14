@@ -1,0 +1,82 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: create a set of resources for backend team
+Parameters:
+  Team:
+    Description: Team name
+    Type: String
+  Project:
+      Description: The project name
+      Type: String
+  Development:
+    Description: Development Enviroumnet
+    Type: String
+
+Resources:
+  DummyServer1:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-009d6802948d06e52
+      Tags:
+        -
+          Key: Name
+          Value: !Join
+                    - '-'
+                    - - !Ref Team
+                      - !Ref Project
+                      - !Ref Development
+                      - 1
+        -
+          Key: Team
+          Value: !Ref Team
+        -
+          Key: Project
+          Value: !Ref Project
+        -
+          Key: Enviroumnt
+          Value: !Ref Development
+
+  DummyServer2:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-009d6802948d06e52
+      Tags:
+        -
+          Key: Name
+          Value: !Join
+                    - '-'
+                    - - !Ref Team
+                      - !Ref Project
+                      - !Ref Development
+                      - 2
+        -
+          Key: Team
+          Value: !Ref Team
+        -
+          Key: Project
+          Value: !Ref Project
+        -
+          Key: Enviroumnt
+          Value: !Ref Development
+
+  DummyServer3:
+      Type: AWS::EC2::Instance
+      Properties:
+        ImageId: ami-009d6802948d06e52
+        Tags:
+          -
+            Key: Name
+            Value: !Join
+                      - '-'
+                      - - !Ref Team
+                        - !Ref Project
+                        - !Ref Development
+                        - 3
+          -
+            Key: Team
+            Value: !Ref Team
+          -
+            Key: Project
+            Value: !Ref Project
+          -
+            Key: Enviroumnt
+            Value: !Ref Development
