@@ -32,7 +32,7 @@ Resources:
           Key: Project
           Value: !Ref Project
         -
-          Key: Enviroumnt
+          Key: Environment
           Value: !Ref Environment
 
   DummyServer2:
@@ -55,7 +55,7 @@ Resources:
           Key: Project
           Value: !Ref Project
         -
-          Key: Enviroumnt
+          Key: Environment
           Value: !Ref Environment
 
   DummyServer3:
@@ -78,5 +78,5 @@ Resources:
             Key: Project
             Value: !Ref Project
           -
-            Key: Enviroumnt
+            Key: Environment
             Value: !Ref Environment

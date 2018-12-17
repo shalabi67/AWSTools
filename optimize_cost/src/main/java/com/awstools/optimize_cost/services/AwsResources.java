@@ -59,70 +59,14 @@ public class AwsResources {
 		return ec2InformationList;
 	}
 
-	/*
-	public List<Ec2Information> stopInstances() {
-		List<Ec2Information> instances = getEc2Instances();
-		List<Ec2Information> stoppedInstances = instances.stream()
-				.filter(Ec2Information::started)
-				.map(instance -> {
-					this.stopInstance(instance.getId());
-					return new Ec2Information(instance.getId());
-				})
-				.collect(Collectors.toList());
 
-		return stoppedInstances;
-	}
-	*/
-	public List<Ec2Information> stopInstances() {
-		return doAction(
-				Ec2Information::started,
-				instance -> {
-					this.stopInstance(instance.getId());
-					return new Ec2Information(instance.getId());
-				}
-		);
-	}
-	public List<Ec2Information> startInstances() {
-		return doAction(
-				Ec2Information::stopped,
-				instance -> {
-					this.startInstance(instance.getId());
-					return new Ec2Information(instance.getId());
-				}
-		);
-	}
-
-	public List<Ec2Information> getTeamResources(String teamName) {
-		return getResources(ec2Information ->
-				ec2Information.getItemInformation().getTeam().equalsIgnoreCase(teamName));
-	}
-	public List<Ec2Information> startTeamInstances(String teamName) {
-		return doAction(
-				ec2Information -> ec2Information.stopped() &&
-									ec2Information.getItemInformation().getTeam().equalsIgnoreCase(teamName),
-				instance -> {
-					this.startInstance(instance.getId());
-					return new Ec2Information(instance.getId());
-				}
-		);
-	}
-	public List<Ec2Information> stopTeamInstances(String teamName) {
-		return doAction(
-				ec2Information -> ec2Information.started() &&
-						ec2Information.getItemInformation().getTeam().equalsIgnoreCase(teamName),
-				instance -> {
-					this.stopInstance(instance.getId());
-					return new Ec2Information(instance.getId());
-				}
-		);
-	}
-	private List<Ec2Information> getResources(Predicate<Ec2Information> predicate) {
+	public List<Ec2Information> getResources(Predicate<Ec2Information> predicate) {
 		List<Ec2Information> instances = getEc2Instances();
 		return instances.stream()
 				.filter(predicate)
 				.collect(Collectors.toList());
 	}
-	private List<Ec2Information> doAction(Predicate<Ec2Information> predicate, Function<Ec2Information, Ec2Information> action) {
+	public List<Ec2Information> doAction(Predicate<Ec2Information> predicate, Function<Ec2Information, Ec2Information> action) {
 		List<Ec2Information> instances = getEc2Instances();
 		List<Ec2Information> stoppedInstances = instances.stream()
 				.filter(predicate)
@@ -132,14 +76,14 @@ public class AwsResources {
 		return stoppedInstances;
 	}
 
-	private void stopInstance(String instanceId) {
+	public void stopInstance(String instanceId) {
 		StopInstancesRequest request = StopInstancesRequest.builder()
 				.instanceIds(instanceId).build();
 
 		ec2Client.stopInstances(request);
 	}
 
-	private void startInstance(String instanceId) {
+	public void startInstance(String instanceId) {
 		StartInstancesRequest request = StartInstancesRequest.builder()
 				.instanceIds(instanceId).build();
 
