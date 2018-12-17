@@ -1,0 +1,15 @@
+[
+  {
+    "ParameterKey": "Environment",
+    "ParameterValue": "Dev"
+  },
+  {
+    "ParameterKey": "Team",
+    "ParameterValue": "Backend"
+  }
+,
+  {
+    "ParameterKey": "Project",
+    "ParameterValue": "Search"
+  }
+]

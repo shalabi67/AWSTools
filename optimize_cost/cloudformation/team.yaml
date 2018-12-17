@@ -7,7 +7,7 @@ Parameters:
   Project:
       Description: The project name
       Type: String
-  Development:
+  Environment:
     Description: Development Enviroumnet
     Type: String
 
@@ -23,7 +23,7 @@ Resources:
                     - '-'
                     - - !Ref Team
                       - !Ref Project
-                      - !Ref Development
+                      - !Ref Environment
                       - 1
         -
           Key: Team
@@ -33,7 +33,7 @@ Resources:
           Value: !Ref Project
         -
           Key: Enviroumnt
-          Value: !Ref Development
+          Value: !Ref Environment
 
   DummyServer2:
     Type: AWS::EC2::Instance
@@ -46,7 +46,7 @@ Resources:
                     - '-'
                     - - !Ref Team
                       - !Ref Project
-                      - !Ref Development
+                      - !Ref Environment
                       - 2
         -
           Key: Team
@@ -56,7 +56,7 @@ Resources:
           Value: !Ref Project
         -
           Key: Enviroumnt
-          Value: !Ref Development
+          Value: !Ref Environment
 
   DummyServer3:
       Type: AWS::EC2::Instance
@@ -69,7 +69,7 @@ Resources:
                       - '-'
                       - - !Ref Team
                         - !Ref Project
-                        - !Ref Development
+                        - !Ref Environment
                         - 3
           -
             Key: Team
@@ -79,4 +79,4 @@ Resources:
             Value: !Ref Project
           -
             Key: Enviroumnt
-            Value: !Ref Development
+            Value: !Ref Environment
