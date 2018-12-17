@@ -1,7 +1,7 @@
 [
   {
     "ParameterKey": "Environment",
-    "ParameterValue": "Dev"
+    "ParameterValue": "Live"
   },
   {
     "ParameterKey": "Team",
@@ -10,6 +10,6 @@
 ,
   {
     "ParameterKey": "Project",
-    "ParameterValue": "Project1"
+    "ParameterValue": "Project2"
   }
 ]
