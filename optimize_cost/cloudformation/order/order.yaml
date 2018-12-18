@@ -1,0 +1,51 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: create a set of resources for backend team
+Parameters:
+  Team:
+    Description: Team name
+    Type: String
+  Project:
+      Description: The project name
+      Type: String
+  Environment:
+    Description: Development Enviroumnet
+    Type: String
+  Order:
+      Description: Order number
+      Type: Number
+  Participate:
+        Description: if false means not participating, true means participating number. particpate means it can be started or stoped using this tool
+        Type: String
+        AllowedValues:
+          - true
+          - false
+
+Resources:
+  DummyServer1:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-009d6802948d06e52
+      Tags:
+        -
+          Key: Name
+          Value: !Join
+                    - '-'
+                    - - !Ref Team
+                      - !Ref Project
+                      - !Ref Environment
+                      - 1
+        -
+          Key: Team
+          Value: !Ref Team
+        -
+          Key: Project
+          Value: !Ref Project
+        -
+          Key: Environment
+          Value: !Ref Environment
+        -
+          Key: Order
+          Value: !Ref Order
+        -
+          Key: Participate
+          Value: !Ref Participate

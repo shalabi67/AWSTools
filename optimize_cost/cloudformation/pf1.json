@@ -6,10 +6,13 @@
   {
     "ParameterKey": "Team",
     "ParameterValue": "PF1"
-  }
-,
+  },
   {
     "ParameterKey": "Project",
     "ParameterValue": "Project1"
+  },
+  {
+    "ParameterKey": "Participate",
+    "ParameterValue": "true"
   }
 ]

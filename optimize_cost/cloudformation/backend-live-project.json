@@ -11,5 +11,9 @@
   {
     "ParameterKey": "Project",
     "ParameterValue": "Ariana"
+  },
+  {
+    "ParameterKey": "Participate",
+    "ParameterValue": "true"
   }
 ]
