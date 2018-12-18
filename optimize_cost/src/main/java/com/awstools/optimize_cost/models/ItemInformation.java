@@ -11,6 +11,8 @@ public class ItemInformation {
 	private String team;
 	private String project;
 	private String name;
+	private Boolean participate;
+	private Short orderNumber;
 
 	public ItemInformation() {
 
@@ -25,6 +27,8 @@ public class ItemInformation {
 		team = hashMap.getOrDefault("team", "");
 		project = hashMap.getOrDefault("project", "");
 		name = hashMap.getOrDefault("name", "");
+		participate = Boolean.valueOf(hashMap.getOrDefault("participate", "false"));
+		orderNumber = Short.valueOf(hashMap.getOrDefault("order", "0"));
 	}
 
 	public String getEnvironment() {
@@ -57,5 +61,21 @@ public class ItemInformation {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Boolean getParticipate() {
+		return participate;
+	}
+
+	public void setParticipate(Boolean participate) {
+		this.participate = participate;
+	}
+
+	public Short getOrderNumber() {
+		return orderNumber;
+	}
+
+	public void setOrderNumber(Short orderNumber) {
+		this.orderNumber = orderNumber;
 	}
 }

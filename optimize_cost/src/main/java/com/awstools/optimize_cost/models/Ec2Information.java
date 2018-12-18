@@ -48,4 +48,10 @@ public class Ec2Information {
 	public Boolean started() {
 		return state.toLowerCase().contains("running");
 	}
+
+	public Boolean canAccept() {
+		if(state.toLowerCase().contains("terminated"))
+			return false;
+		return getItemInformation().getParticipate();
+	}
 }

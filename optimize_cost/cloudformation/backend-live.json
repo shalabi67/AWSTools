@@ -11,5 +11,9 @@
   {
     "ParameterKey": "Project",
     "ParameterValue": "Search"
+  },
+  {
+    "ParameterKey": "Participate",
+    "ParameterValue": "true"
   }
 ]
