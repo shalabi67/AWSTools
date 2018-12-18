@@ -42,7 +42,7 @@ public class Ec2Information {
 	}
 
 	public Boolean stopped() {
-		return state.toLowerCase().contains("terminated") ||
+		return //state.toLowerCase().contains("terminated") ||
 				state.toLowerCase().contains("stopped");
 	}
 	public Boolean started() {

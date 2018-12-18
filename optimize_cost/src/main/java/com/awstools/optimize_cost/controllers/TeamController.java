@@ -7,6 +7,7 @@ import com.awstools.optimize_cost.models.Team;
 import com.awstools.optimize_cost.services.AwsResources;
 import com.awstools.optimize_cost.services.Ec2Service;
 import com.awstools.optimize_cost.services.ResourcesService;
+import com.awstools.optimize_cost.services.TeamEnvironmentProjectResourcesService;
 import com.awstools.optimize_cost.services.TeamEnvironmentResourcesService;
 import com.awstools.optimize_cost.services.TeamResourcesService;
 import com.awstools.optimize_cost.services.TeamService;
@@ -66,6 +67,22 @@ public class TeamController {
 				resourcesFactory.create(ResourceInformationEnum.TeamEnvironment);
 		service.setTeamName(teamName);
 		service.setEnvironment(environment);
+
+		List<Ec2Information> list = run(service, action);
+		return new ResponseEntity<>(list, HttpStatus.OK);
+	}
+
+	@GetMapping("/resources/{teamName}/environments/{environment}/projects/{projectName}")
+	public ResponseEntity<List<Ec2Information>> getTeamEnvironmentProjectResources(
+			@PathVariable("teamName")String teamName,
+			@PathVariable("environment")String environment,
+			@PathVariable("projectName")String projectName,
+			@RequestParam(required = false, name = "action")String action) {
+		TeamEnvironmentProjectResourcesService service = (TeamEnvironmentProjectResourcesService)
+				resourcesFactory.create(ResourceInformationEnum.TeamEnvironmentProject);
+		service.setTeamName(teamName);
+		service.setEnvironment(environment);
+		service.setProjectName(projectName);
 
 		List<Ec2Information> list = run(service, action);
 		return new ResponseEntity<>(list, HttpStatus.OK);

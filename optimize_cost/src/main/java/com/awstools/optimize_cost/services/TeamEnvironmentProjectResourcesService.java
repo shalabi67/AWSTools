@@ -1,15 +1,17 @@
 package com.awstools.optimize_cost.services;
 
 import com.awstools.optimize_cost.models.Ec2Information;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.function.Predicate;
 
-public class TeamEnvironmentResourcesService extends Ec2Service {
+public class TeamEnvironmentProjectResourcesService extends Ec2Service {
+
 	private String teamName;
 	private String environment;
+	private String projectName;
 
-	public TeamEnvironmentResourcesService(AwsResources awsResources) {
+	public TeamEnvironmentProjectResourcesService(AwsResources awsResources) {
 		this.awsResources = awsResources;
 	}
 
@@ -21,8 +23,11 @@ public class TeamEnvironmentResourcesService extends Ec2Service {
 		this.environment = environment;
 	}
 
-	@Override
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+
 	protected Boolean isValidResource(Ec2Information ec2Information) {
-		return PredicateBuilder.isTeamEnvironmentResource(ec2Information, teamName, environment);
+		return PredicateBuilder.isTeamEnvironmentProjectResource(ec2Information, teamName, environment, projectName);
 	}
 }

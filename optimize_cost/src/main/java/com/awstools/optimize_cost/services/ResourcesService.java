@@ -6,8 +6,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ResourcesService implements Ec2Service {
-	private AwsResources awsResources;
+public class ResourcesService extends Ec2Service {
 
 	public ResourcesService(AwsResources awsResources) {
 		this.awsResources = awsResources;
@@ -23,6 +22,8 @@ public class ResourcesService implements Ec2Service {
 				}
 		);
 	}
+
+
 
 	@Override
 	public List<Ec2Information> startInstances() {
@@ -40,6 +41,8 @@ public class ResourcesService implements Ec2Service {
 		return awsResources.getEc2Instances();
 	}
 
-
+	@Override protected Boolean isValidResource(Ec2Information ec2Information) {
+		return true;
+	}
 
 }

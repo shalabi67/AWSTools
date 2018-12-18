@@ -1,4 +1,4 @@
-#Optimize Cost
+#Cost Optimization 
 This project is about optimizing aws cost by stooped or removing not used resources. the project is structuered based on Team, 
 Environment(Live, stable, development, testing) and Projects.
 
@@ -33,3 +33,14 @@ http://localhost:8080/teams/resources/backend/environments/live?action=stop
 
 ####start all resources for backend team for an environment live
 http://localhost:8080/teams/resources/backend/environments/live?action=start
+
+
+###API Team Environment Project resources example
+####List all resources for team backend, live environment, and search project
+http://localhost:8080/teams/resources/backend/environments/live/projects/search
+
+####Start all resources for team backend, live environment, and search project
+http://localhost:8080/teams/resources/backend/environments/live/projects/search?action=start
+
+####Stop all resources for team backend, live environment, and search project
+http://localhost:8080/teams/resources/backend/environments/live/projects/search?action=stop

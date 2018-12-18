@@ -10,4 +10,12 @@ public class PredicateBuilder {
 		return isTeamResource(ec2Information, teamName) &&
 				ec2Information.getItemInformation().getEnvironment().equalsIgnoreCase(environment);
 	}
+	public static Boolean isTeamEnvironmentProjectResource(
+			Ec2Information ec2Information,
+			String teamName,
+			String environment,
+			String projectName) {
+		return isTeamEnvironmentResource(ec2Information, teamName, environment) &&
+				ec2Information.getItemInformation().getProject().equalsIgnoreCase(projectName);
+	}
 }
